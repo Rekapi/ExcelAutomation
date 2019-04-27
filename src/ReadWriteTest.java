@@ -14,15 +14,30 @@ public class ReadWriteTest {
 		@SuppressWarnings("resource")
 		XSSFWorkbook workbook = new XSSFWorkbook(Rfile);
 		XSSFSheet sheet = workbook.getSheetAt(0);
-		XSSFCell cell = sheet.getRow(8).getCell(2);
-		String c9 = cell.getStringCellValue();
-		System.out.println(c9);
+		// declaring and printing cell C9
+		XSSFCell cellc9 = sheet.getRow(8).getCell(2);
+		String c9 = cellc9.getStringCellValue();
+//		System.out.println(c9);
 		
+		// declaring and printing cell F9
+		XSSFCell cellf9 = sheet.getRow(8).getCell(5);
+		String f9 = cellf9.getStringCellValue();
+	//	System.out.println(f9);
 		
+		// declaring and printing cell I9
+		XSSFCell cellI9 = sheet.getRow(8).getCell(8);
+		String I9 = cellI9.getStringCellValue();
+	//	System.out.println(I9);
 		
-		
-		
-		
+		// iterating through the cells 
+		int count = 30;
+		for (int i = 0; i < count; i++) {
+			// printing multy cells 
+			String data = sheet.getRow(8).getCell(i+2).getStringCellValue();
+			System.out.println(data);
+		}
+		System.out.println();
+		workbook.close();
 	}
 
 }
