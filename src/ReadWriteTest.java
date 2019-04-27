@@ -11,9 +11,16 @@ public class ReadWriteTest {
 		File Rsrc = new File("C:\\Users\\mahmoud.mohamed\\Documents\\TLR.xlsx");
 		FileInputStream Rfile =  new FileInputStream(Rsrc);
 		
-		@SuppressWarnings("resource")
+		File Wsrc = new File("C:\\Users\\mahmoud.mohamed\\Documents\\TLW.xlsx");
+		FileInputStream Wfile =  new FileInputStream(Wsrc);
+		
 		XSSFWorkbook workbook = new XSSFWorkbook(Rfile);
 		XSSFSheet sheet = workbook.getSheetAt(0);
+		
+		@SuppressWarnings("resource")
+		XSSFWorkbook workbook2 = new XSSFWorkbook(Wfile);
+		XSSFSheet sheet2 = workbook2.getSheetAt(0);
+		
 		// declaring and printing cell C9
 		XSSFCell cellc9 = sheet.getRow(8).getCell(2);
 		String c9 = cellc9.getStringCellValue();
@@ -31,11 +38,23 @@ public class ReadWriteTest {
 		
 		// iterating through the cells 
 		int count = 30;
-		for (int i = 0; i < count; i++) {
+		for (int i = 2; i < count; i++) {
 			// printing multy cells 
-			String data = sheet.getRow(8).getCell(i+2).getStringCellValue();
-			System.out.println(data);
+ 			String data = sheet.getRow(8).getCell(i).getStringCellValue();
+		//	System.out.println(data);
+/*			for(int j=0;j<count;j++) {
+
+			}*/
+			
 		}
+		XSSFCell cellW = sheet2.getRow(9).getCell(2);
+		String cellVal = cellW.getStringCellValue();
+	//	sheet2.getRow(j).getCell(10).setCellValue(data);
+		System.out.println(cellVal);
+		
+		XSSFCell cellT = sheet2.getRow(9).getCell(2);
+		cellT.setCellValue("Mahmoud");
+		System.out.println(cellT);
 		System.out.println();
 		workbook.close();
 	}
